@@ -10,51 +10,38 @@ Author: cam-williams-1
 ### Context I provided to the AI
 
 - Project goal: A simple shopping web app using React that handles adding items to a shopping cart and manages state, API calls, UI changes, and testing.
-- Non-goals / scope limits: Only front-end. Items from API. Single page application. Locally hosted. Detailed README for reviewer to test.
-- Key repo paths / architecture notes:
+- Scope limits: Only front-end. Items from API. Single page application. Locally hosted.
 - Data/API schemas shared: Items API: (https://fakestoreapi.com/products.)
 - Validation + security rules:
-- Performance constraints:
+- Performance constraints: Asked to use BEM Methodology. Never delete anything without my permission.
 - Definition of done: Fully functioning web app that adds/removes items from a shopping cart and manages cart state and price in the cart.
 
 ### Prompting approach
 
 1. Asked for a high-level plan and risk checklist.
-2. Asked for a minimal implementation proposal that matches existing patterns.
-3. Asked for tests, specifically requesting edge cases and failure-path coverage.
+2. After creating the file structure that I wanted, I prompted Copilot to build each component using BEM Methodology and I then refactored as needed.
+3. Asked Copilot to create tests for the api calls and refactored as needed - ensuring failure-path coverage.
 4. Iterated with targeted prompts when issues were found (see Human Audit).
 
 ## 2) Human Audit (Corrections / Refinements)
 
-### Audit Item 1 — [Security] (e.g., Authorization / IDOR)
+### Audit Item 1 —
 
-- AI suggestion:
-- Issue:
-- Fix applied:
-- Verification (tests/tools):
+- AI suggestion: Installing more dependencies for a syntax error.
+- Issue: Jest testing suite was failing due to syntax error.
+- Fix applied: Justed needed an update to the code itself.
 
-### Audit Item 2 — [Security] (e.g., Input validation / injection)
+### Audit Item 2 -
 
-- AI suggestion:
-- Issue:
-- Fix applied:
-- Verification:
-
-### Audit Item 3 — [Performance/Correctness] (e.g., N+1 query / caching / transaction)
-
-- AI suggestion:
-- Issue:
-- Fix applied:
-- Verification:
-
-(Include more if you have them.)
+- AI suggestion: adding a function to rename the api title to name.
+- Issue: I wrote item.name instead of title.
+- Fix Applied: Changed it to title. No need for a whole function for that.
 
 ## 3) Verification (AI-Assisted Testing for Edge Cases)
 
 ### How AI helped generate edge cases
 
-- Prompt summary:
-- Edge-case matrix produced:
+- Suggested Jest and Babel for testing and I walked it through setting up dependencies.
 
 ### Tests I added based on AI suggestions
 

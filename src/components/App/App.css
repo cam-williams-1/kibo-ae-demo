@@ -1,0 +1,9 @@
+.page {
+  background-color: #f5f5f5;
+}
+
+.page__content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
