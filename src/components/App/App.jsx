@@ -4,44 +4,25 @@ import ItemList from "../ItemList/ItemList";
 import CartModal from "../CartModal/CartModal";
 import Footer from "../Footer/Footer";
 import { getItems } from "../../utils/api";
+import { addToCart, removeFromCart } from "../../utils/cart";
 import "./App.css";
 
 const App = () => {
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  // since there is only one modal, i used state. If there were multiple i would use a generic activemodal.
   const [isCartModalActive, setIsCartModalActive] = useState(false);
 
-  const addToCart = (item) => {
-    setCartItems((prevCartItems) => {
-      const existingItem = prevCartItems.find(
-        (cartItem) => cartItem.id === item.id,
-      );
-      if (existingItem) {
-        return prevCartItems.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem,
-        );
-      } else {
-        return [...prevCartItems, { ...item, quantity: 1 }];
-      }
-    });
+  const handleAddToCart = (item) => {
+    setCartItems((prevCartItems) => addToCart(prevCartItems, item));
     setIsCartModalActive(true);
+  };
+
+  const handleRemoveFromCart = (id) => {
+    setCartItems((prevCartItems) => removeFromCart(prevCartItems, id));
   };
 
   const toggleCartModal = () => {
     setIsCartModalActive((prev) => !prev);
-  };
-
-  const removeFromCart = (id) => {
-    setCartItems((prevCartItems) => {
-      return prevCartItems
-        .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
-        )
-        .filter((item) => item.quantity > 0);
-    });
   };
 
   useEffect(() => {
@@ -63,12 +44,12 @@ const App = () => {
       <div className="page__content">
         <Header toggleCartModal={toggleCartModal} />
         <main>
-          <ItemList items={items} addToCart={addToCart} />
+          <ItemList items={items} addToCart={handleAddToCart} />
           {isCartModalActive && (
             <CartModal
               cartItems={cartItems}
               onClose={toggleCartModal}
-              removeFromCart={removeFromCart}
+              removeFromCart={handleRemoveFromCart}
             />
           )}
         </main>

@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "node-fetch": "^2.7.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.5.0"
@@ -18,6 +19,8 @@
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@babel/preset-env": "^7.29.0",
+    "@babel/preset-react": "^7.28.5",
+    "@testing-library/react": "^16.3.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -26,7 +29,9 @@
     "eslint-plugin-react": "^7.34.2",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "vite": "^5.3.1"
   }
 }
